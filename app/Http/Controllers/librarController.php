@@ -42,18 +42,18 @@ class librarController extends Controller
         ]);
 
 
-         //upload image
-         $image = $request->file('image');
-         $image->storeAs('public/posts', $image->hashName());
+        //upload image
+        $image = $request->file('image');
+        $image->storeAs('public/posts', $image->hashName());
 
-         //masukan data ke database
-         $books = new books;
-         $books->title = $request->title;
-         $books->description = $request->description;
-         $books->author = $request->author;
-         $books->publisher = $request->publisher;
-         $books->image = $image->hashName();
-         $books->save();
+        //masukan data ke database
+        $books = new books;
+        $books->title = $request->title;
+        $books->description = $request->description;
+        $books->author = $request->author;
+        $books->publisher = $request->publisher;
+        $books->image = $image->hashName();
+        $books->save();
 
         return redirect('/');
     }
@@ -66,8 +66,8 @@ class librarController extends Controller
     }
     public function editform(books $id)
     {
-        $books = $id;
-        return view('updateForm', compact('books'));
+        $book = $id;
+        return view('updateForm', compact('book'));
     }
 
     /**
@@ -123,5 +123,10 @@ class librarController extends Controller
     {
         $books = $id;
         return view('detail', compact('books'));
+    }
+
+    public function loginView()
+    {
+        return view('loginForm');
     }
 }

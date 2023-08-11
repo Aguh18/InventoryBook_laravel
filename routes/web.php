@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\librarController;
+use App\Http\Controllers\registerController;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
@@ -27,3 +28,7 @@ route::get('/edit/{id}', [librarController::class, 'editform']);
 route::put('/edit/{id}', [librarController::class, 'update']);
 route::delete('/delete/{id}', [librarController::class, 'destroy']);
 route::get('detail/{id}', [librarController::class, 'detail']);
+route::get('/login', [librarController::class, 'loginView']);
+
+//to register
+route::get('/register', [registerController::class, 'index']);
