@@ -12,7 +12,11 @@ class registerController extends Controller
      */
     public function index()
     {
-        return view('register');
+        return view('registrations.register');
+    }
+    public function passwordView()
+    {
+        return view('registrations.password');
     }
 
     /**
@@ -20,7 +24,17 @@ class registerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+
+        $request->validate([
+            'name' => 'required|min:1',
+            'username' => 'required|min : 1',
+            'email' => 'required|email:dns|unique:users',
+            'password' => 'required|min:1',
+            'retype_password' => 'required|min:1|same:password',
+
+        ]);
+
     }
 
     /**

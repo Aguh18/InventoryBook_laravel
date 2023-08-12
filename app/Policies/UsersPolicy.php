@@ -3,10 +3,10 @@
 namespace App\Policies;
 
 use App\Models\User;
-use App\Models\books;
+use App\Models\users;
 use Illuminate\Auth\Access\Response;
 
-class BooksPolicy
+class UsersPolicy
 {
     /**
      * Determine whether the user can view any models.
@@ -19,7 +19,7 @@ class BooksPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, books $books): bool
+    public function view(User $user, users $users): bool
     {
         //
     }
@@ -35,7 +35,7 @@ class BooksPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, books $books): bool
+    public function update(User $user, users $users): bool
     {
         //
     }
@@ -43,7 +43,7 @@ class BooksPolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, books $books): bool
+    public function delete(User $user, users $users): bool
     {
         //
     }
@@ -51,7 +51,7 @@ class BooksPolicy
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, books $books): bool
+    public function restore(User $user, users $users): bool
     {
         //
     }
@@ -59,7 +59,7 @@ class BooksPolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, books $books): bool
+    public function forceDelete(User $user, users $users): bool
     {
         //
     }

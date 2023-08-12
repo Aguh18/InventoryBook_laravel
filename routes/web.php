@@ -32,3 +32,5 @@ route::get('/login', [librarController::class, 'loginView']);
 
 //to register
 route::get('/register', [registerController::class, 'index']);
+route::post('/register', [registerController::class,'store']);
+route::get('register/password', [registerController::class, 'passwordView']);

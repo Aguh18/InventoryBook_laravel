@@ -40,22 +40,25 @@ class librarController extends Controller
             'image' => 'required|mimes:jpg,png,jpeg'
             // 'image' =>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
+        if ($validated) {
+            //upload image
+            $image = $request->file('image');
+            $image->storeAs('public/posts', $image->hashName());
+
+            //masukan data ke database
+            $books = new books;
+            $books->title = $request->title;
+            $books->description = $request->description;
+            $books->author = $request->author;
+            $books->publisher = $request->publisher;
+            $books->image = $image->hashName();
+            $books->save();
+
+            return redirect('/');
+        }
 
 
-        //upload image
-        $image = $request->file('image');
-        $image->storeAs('public/posts', $image->hashName());
 
-        //masukan data ke database
-        $books = new books;
-        $books->title = $request->title;
-        $books->description = $request->description;
-        $books->author = $request->author;
-        $books->publisher = $request->publisher;
-        $books->image = $image->hashName();
-        $books->save();
-
-        return redirect('/');
     }
 
     // editview
