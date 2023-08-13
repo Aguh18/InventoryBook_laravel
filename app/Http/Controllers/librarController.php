@@ -40,7 +40,7 @@ class librarController extends Controller
             'image' => 'required|mimes:jpg,png,jpeg'
             // 'image' =>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
-        if ($validated) {
+
             //upload image
             $image = $request->file('image');
             $image->storeAs('public/posts', $image->hashName());
@@ -55,7 +55,7 @@ class librarController extends Controller
             $books->save();
 
             return redirect('/');
-        }
+
 
 
 

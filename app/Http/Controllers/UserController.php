@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -39,6 +40,24 @@ class UserController extends Controller
         ]);
         $validated['password'] = bcrypt($validated['password']);
         User::create($validated);
+        $request->session()->flash('success', 'Registration successfull');
+        return redirect('/login');
+
+    }
+
+    public function authentication( request $request){
+        $credetials=$request->validate([
+            'email' => 'required|email:dns',
+            'password' => 'required|min:5',
+        ]);
+        if(Auth::attempt($credetials)){
+            $request->session()->regenerate();
+            return redirect()->intended('/');
+
+        }
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ]);
 
     }
 

@@ -29,6 +29,7 @@ route::put('/edit/{id}', [librarController::class, 'update']);
 route::delete('/delete/{id}', [librarController::class, 'destroy']);
 route::get('detail/{id}', [librarController::class, 'detail']);
 route::get('/login', [librarController::class, 'loginView']);
+route::post('/login', [UserController::class, 'authentication']);
 
 //to register
 route::get('/register', [UserController::class, 'index']);
