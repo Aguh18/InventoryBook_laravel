@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use App\Http\Requests\StoreUserRequest;
+use App\Http\Requests\UpdateUserRequest;
 
-class registerController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,14 +29,16 @@ class registerController extends Controller
     {
 
 
-        $request->validate([
+        $validated = $request->validate([
             'name' => 'required|min:1',
             'username' => 'required|min : 1',
             'email' => 'required|email:dns|unique:users',
-            'password' => 'required|min:1',
-            'retype_password' => 'required|min:1|same:password',
+            'password' => 'required|min:5',
+            'retype_password' => 'required|same:password',
 
         ]);
+        $validated['password'] = bcrypt($validated['password']);
+        User::create($validated);
 
     }
 

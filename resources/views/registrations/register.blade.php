@@ -15,23 +15,23 @@
                                     <div>
 
                                         <div class="form-outline">
-                                            <input name="name" type="text" id="firstName"
+                                            <input value="{{ old('name') }}" name="name" type="text" id="firstName"
                                                 class="form-control form-control-lg @error('name')is-invalid" placeholder="please enter the name" @enderror />
 
                                             <label class="form-label " for="firstName">Name</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 mb-1">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 mb-1">
 
 
-                                        </div>
-                                    </div>
+                                                    </div>
+                                                </div>
 
-                                    <div class="row">
-                                        <div >
+                                                <div class="row">
+                                                    <div >
 
-                                            <div class="form-outline">
-                                                <input  name="username" type="text" id="username" class="form-control form-control-lg @error('username')is-invalid" placeholder="please enter the username" @enderror />
+                                                        <div class="form-outline">
+                                                            <input value="{{ old('username') }}" name="username" type="text" id="username" class="form-control form-control-lg @error('username')is-invalid" placeholder="please enter the username" @enderror />
 
                                             <label class="form-label "
                                                 for="firstName">Username</label>
@@ -51,7 +51,9 @@
 
 
                                     <div class="form-outline">
-                                        <input name="email" type="email" id="emailAddress" class="form-control form-control-lg @error('email')is-invalid  @enderror " @error('email')
+                                        <input value="{{ old('email') }}" name="email" type="email" id="emailAddress"
+                                            class="form-control form-control-lg @error('email')is-invalid  @enderror "
+                                            @error('email')
                                         placeholder="please enter the email"
                                         @enderror>
                                         <label class="form-label" for="emailAddress">Email</label>
@@ -65,10 +67,14 @@
 
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-6 mb-4 pb-2">
+                                    <div class="col-md-6 mb-2 pb-1">
 
                                         <div class="form-outline">
-                                            <input type="password" id="passwordid" class="form-control form-control-lg" />
+                                            <input name="password" type="password" id="passwordid"
+                                                class="form-control form-control-lg @error('password')
+                                            is-invalid @enderror"@error('password')
+                                            placeholder="minimum 5 characters"
+                                            @enderror />
                                             <label class="form-label" for="passwordid">password</label>
                                         </div>
 
@@ -77,7 +83,10 @@
 
                                         <div class="form-outline">
                                             <input type="password" name="retype_password" id="repassword"
-                                                class="form-control form-control-lg" />
+                                                class="form-control form-control-lg @error('retype_password')
+                                                is-invalid @enderror"
+                                                @error('retype_password') placeholder="retype password" @enderror />
+
                                             <label class="form-label" for="repassword">retype password</label>
                                         </div>
 
@@ -88,8 +97,12 @@
                                 <div class="mt-2 d-flex justify-content-center">
                                     <input class="btn btn-primary btn-lg" type="submit" value="Submit" />
                                 </div>
+                                <hr>
 
                             </form>
+                            <div class="text-center">
+                                <p>Already a member? <a href="/login">Login</a></p>
+                            </div>
                         </div>
                     </div>
                 </div>

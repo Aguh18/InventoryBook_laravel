@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\librarController;
-use App\Http\Controllers\registerController;
+use App\Http\Controllers\UserController;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
@@ -31,6 +31,6 @@ route::get('detail/{id}', [librarController::class, 'detail']);
 route::get('/login', [librarController::class, 'loginView']);
 
 //to register
-route::get('/register', [registerController::class, 'index']);
-route::post('/register', [registerController::class,'store']);
-route::get('register/password', [registerController::class, 'passwordView']);
+route::get('/register', [UserController::class, 'index']);
+route::post('/register', [UserController::class,'store']);
+route::get('register/password', [UserController::class, 'passwordView']);
