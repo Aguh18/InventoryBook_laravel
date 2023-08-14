@@ -3,6 +3,7 @@
 use App\Http\Controllers\librarController;
 use App\Http\Controllers\UserController;
 use Illuminate\Routing\Controller;
+use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\booksController;
@@ -28,10 +29,10 @@ route::get('/edit/{id}', [librarController::class, 'editform']);
 route::put('/edit/{id}', [librarController::class, 'update']);
 route::delete('/delete/{id}', [librarController::class, 'destroy']);
 route::get('detail/{id}', [librarController::class, 'detail']);
-route::get('/login', [librarController::class, 'loginView']);
-route::post('/login', [UserController::class, 'authentication']);
+route::get('/login', [librarController::class, 'loginView'])->middleware('auth');
+route::post('/login', [UserController::class, 'authenticate']);
 
 //to register
 route::get('/register', [UserController::class, 'index']);
-route::post('/register', [UserController::class,'store']);
+route::post('/register', [UserController::class, 'store']);
 route::get('register/password', [UserController::class, 'passwordView']);

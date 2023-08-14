@@ -9,6 +9,7 @@ use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use Illuminate\Support\Facades\Auth;
 
+
 class UserController extends Controller
 {
     /**
@@ -45,16 +46,19 @@ class UserController extends Controller
 
     }
 
-    public function authentication( request $request){
-        $credetials=$request->validate([
+    public function authenticate(request $request)
+    {
+        $request->validate([
             'email' => 'required|email:dns',
             'password' => 'required|min:5',
         ]);
-        if(Auth::attempt($credetials)){
+
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             $request->session()->regenerate();
             return redirect()->intended('/');
 
         }
+
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
         ]);

@@ -21,7 +21,7 @@
 
                                 <div class="form-outline mb-4">
                                     <input name="email" type="email" id="typeEmailX-2"
-                                        class="form-control form-control-lg" required />
+                                        class="form-control form-control-lg " required  />
                                     <label class="form-label" for="typeEmailX-2">Email</label>
                                 </div>
 

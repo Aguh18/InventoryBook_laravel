@@ -117,6 +117,7 @@ class librarController extends Controller
      */
     public function destroy(books $id)
     {
+        Storage::delete('public/posts/' . $id->image);
         $id->delete();
         return redirect('/edit');
 

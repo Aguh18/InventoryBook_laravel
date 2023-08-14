@@ -16,12 +16,15 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="/input">Add New</a></li>
                         <li><a class="dropdown-item" href="/edit">Update&Delete</a></li>
+
                         <li>
                             <hr class="dropdown-divider">
                         </li>
 
                     </ul>
+
                 </li>
+                <a class="nav-link" href="/login">login</a>
 
 
             </div>
