@@ -21,7 +21,7 @@ use App\Http\Controllers\booksController;
 |
 */
 
-Route::get('/', [librarController::class, 'index']);
+Route::get('/', [librarController::class, 'index'])->middleware('auth');
 route::get('/input', [librarController::class, 'inputView']);
 route::post('/input', [librarController::class, 'store']);
 route::get('/edit', [librarController::class, 'editView']);
@@ -29,10 +29,15 @@ route::get('/edit/{id}', [librarController::class, 'editform']);
 route::put('/edit/{id}', [librarController::class, 'update']);
 route::delete('/delete/{id}', [librarController::class, 'destroy']);
 route::get('detail/{id}', [librarController::class, 'detail']);
-route::get('/login', [librarController::class, 'loginView'])->middleware('auth');
+route::get('/login', [librarController::class, 'loginView'])->name('login')->middleware('guest');
 route::post('/login', [UserController::class, 'authenticate']);
+route::post('/logout', [UserController::class, 'logout']);
 
 //to register
 route::get('/register', [UserController::class, 'index']);
 route::post('/register', [UserController::class, 'store']);
 route::get('register/password', [UserController::class, 'passwordView']);
+
+
+
+

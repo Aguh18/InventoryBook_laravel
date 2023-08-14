@@ -24,7 +24,15 @@
                     </ul>
 
                 </li>
-                <a class="nav-link" href="/login">login</a>
+                @auth
+                <form action="/logout" method="post">
+                    @csrf
+                    <button type="submit">logout</button>
+                </form>
+                @else
+                    <a class="nav-link" href="/login">login</a>
+                @endauth
+
 
 
             </div>

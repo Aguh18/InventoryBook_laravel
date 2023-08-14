@@ -65,6 +65,14 @@ class UserController extends Controller
 
     }
 
+    public function logout(request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/');
+    }
+
     /**
      * Display the specified resource.
      */
